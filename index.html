@@ -1,0 +1,736 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>m-CAFEs SFA — Microbial Community Analysis &amp; Functional Evaluation in Soils</title>
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bl:#4A8DB7;--bld:#2f6a8f;--bll:#d6eaf5;--or:#E07B2A;--orl:#fdf0e3;--gr:#5A9C3A;--purp:#8b6dc4;--purpl:#f0eaff;--wh:#fff;--gl:#f5f6f7;--gm:#e2e5e8;--gt:#555e68;--dk:#1e2a35;--r:6px;--sh:0 2px 12px rgba(0,0,0,0.09);--mw:1100px;--nh:62px}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Segoe UI',Arial,sans-serif;color:var(--dk);background:var(--wh);line-height:1.7}
+img{display:block;max-width:100%}
+a{color:var(--bl);text-decoration:none}
+a:hover{text-decoration:underline}
+.container{max-width:var(--mw);margin:0 auto;padding:0 28px}
+/* NAV */
+#site-nav{position:sticky;top:0;z-index:1000;background:var(--dk);height:var(--nh);display:flex;align-items:center;box-shadow:0 2px 8px rgba(0,0,0,0.22)}
+.nav-inner{max-width:var(--mw);margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
+.nav-logo img{height:36px;width:auto}
+.nav-logo-text{color:#fff;font-weight:800;font-size:1.1rem;letter-spacing:.01em}
+#site-nav ul{list-style:none;display:flex;gap:2px;flex-wrap:wrap}
+#site-nav ul a{display:block;padding:6px 13px;color:rgba(255,255,255,0.8);font-size:.845rem;font-weight:500;border-radius:var(--r);transition:background .15s,color .15s}
+#site-nav ul a:hover,#site-nav ul a.active{background:var(--bl);color:#fff}
+/* HERO */
+#hero{background:linear-gradient(135deg,var(--dk) 0%,#1a3a52 55%,#2f6a8f 100%);padding:76px 0 68px;color:#fff}
+.hero-grid{display:grid;grid-template-columns:1fr 380px;gap:52px;align-items:center}
+.hero-tag{display:inline-block;background:var(--or);color:#fff;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 11px;border-radius:2px;margin-bottom:16px}
+#hero h1{font-size:clamp(1.65rem,2.8vw,2.5rem);font-weight:700;line-height:1.22;margin-bottom:14px}
+#hero h1 span{color:#7ec8f0}
+.hero-pull{font-size:1rem;color:rgba(255,255,255,0.85);border-left:3px solid var(--or);padding-left:14px;margin-bottom:30px;line-height:1.65}
+.hero-stats{display:flex;gap:28px;flex-wrap:wrap}
+.hero-stat strong{display:block;font-size:1.8rem;font-weight:700;color:#fff;line-height:1}
+.hero-stat span{font-size:.72rem;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:.06em}
+.hero-imgs{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:150px 150px;gap:8px}
+.hero-imgs .ph:first-child{grid-row:span 2}
+/* STRIP */
+.logo-strip{background:var(--gl);border-top:1px solid var(--gm);border-bottom:1px solid var(--gm);padding:14px 0}
+.logo-strip .container{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.strip-label{font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;color:var(--gt);font-weight:600;white-space:nowrap;margin-right:6px}
+.logo-pill{background:var(--wh);border:1px solid var(--gm);border-radius:4px;padding:5px 13px;font-size:.76rem;font-weight:600;color:var(--gt)}
+/* SECTIONS */
+section{padding:76px 0}
+section:nth-of-type(even){background:var(--gl)}
+.sec-label{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--or);margin-bottom:9px}
+.sec-heading{font-size:clamp(1.35rem,2.4vw,1.9rem);font-weight:700;color:var(--dk);margin-bottom:14px;line-height:1.25}
+.sec-intro{font-size:.99rem;color:var(--gt);max-width:720px;margin-bottom:44px}
+.divider{width:44px;height:3px;background:var(--or);margin:12px 0 22px;border-radius:2px}
+/* PLACEHOLDERS */
+.ph{background:var(--bll);border:2px dashed var(--bl);border-radius:var(--r);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:var(--bld);font-size:.74rem;font-weight:600;letter-spacing:.04em;gap:7px;padding:12px}
+.ph.g{background:#e8f4e8;border-color:#7ab87a;color:#3a6e3a}
+.ph.p{background:#e8eff5;border-color:#9ab8cc;color:#5a7a8e}
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start}
+.about-text p{color:var(--gt);margin-bottom:15px;font-size:.95rem}
+.ber-callout{margin-top:22px;background:var(--bll);border-left:4px solid var(--bl);border-radius:0 var(--r) var(--r) 0;padding:14px 18px}
+.ber-callout p{font-size:.86rem;color:var(--bld);margin:0}
+.about-imgs{display:flex;flex-direction:column;gap:10px}
+/* THRUSTS */
+.thrust-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-bottom:52px}
+.thrust-card{background:var(--wh);border:1px solid var(--gm);border-radius:var(--r);padding:26px 24px;box-shadow:var(--sh);position:relative}
+.thrust-card.ai{border-top:3px solid var(--purp);background:linear-gradient(to bottom,#faf8ff 0%,#fff 60%)}
+.thrust-card .num{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--bl);margin-bottom:6px}
+.thrust-card.ai .num{color:var(--purp)}
+.thrust-card h3{font-size:1.05rem;font-weight:700;color:var(--dk);margin-bottom:9px}
+.thrust-card p{font-size:.88rem;color:var(--gt);line-height:1.6}
+.thrust-card .pis{margin-top:14px;font-size:.78rem;color:var(--bld)}
+.thrust-card .pis strong{display:block;font-size:.66rem;text-transform:uppercase;letter-spacing:.08em;color:var(--gt);margin-bottom:3px}
+.genesis-badge{display:inline-block;background:var(--purp);color:#fff;font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:2px 8px;border-radius:2px;margin-left:8px;vertical-align:middle}
+/* PLATFORMS */
+.platforms{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.plat-card{background:var(--wh);border:1px solid var(--gm);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);text-align:center}
+.plat-label{padding:13px 10px 3px;font-size:.88rem;font-weight:700;color:var(--dk)}
+.plat-sub{padding:0 10px 13px;font-size:.76rem;color:var(--gt);line-height:1.5}
+/* HIGHLIGHTS */
+.highlights-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.hcard{background:var(--wh);border:1px solid var(--gm);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
+.hcard:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.12)}
+.hcard .himg{height:170px;flex-shrink:0}
+.hcard .hbody{padding:20px;flex:1;display:flex;flex-direction:column}
+.hcard .htag{font-size:.66rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--or);margin-bottom:7px}
+.hcard h3{font-size:.96rem;font-weight:700;color:var(--dk);margin-bottom:9px;line-height:1.35}
+.hcard p{font-size:.85rem;color:var(--gt);line-height:1.6;flex:1}
+.hcard .hlink{display:inline-block;margin-top:14px;font-size:.8rem;font-weight:600;color:var(--bl)}
+/* TEAM */
+.team-banner{height:230px;border-radius:var(--r);margin-bottom:44px}
+.pi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:20px;margin-bottom:36px}
+.pi-card{text-align:center}
+.pi-photo{width:100%;aspect-ratio:1;border-radius:50%;margin:0 auto 11px;max-width:110px;object-fit:cover}
+.pi-card h4{font-size:.87rem;font-weight:700;color:var(--dk);margin-bottom:3px;line-height:1.3}
+.pi-inst{font-size:.74rem;color:var(--gt)}
+.pi-role{font-size:.68rem;color:var(--or);font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-top:2px}
+.pi-note{font-size:.74rem;color:var(--gt);margin-top:4px;font-style:italic;line-height:1.4}
+.inst-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;padding-top:28px;border-top:1px solid var(--gm)}
+.inst-lbl{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--gt);font-weight:600;width:100%}
+.inst-chip{background:var(--wh);border:1px solid var(--gm);border-radius:4px;padding:6px 15px;font-size:.79rem;font-weight:600;color:var(--dk)}
+.mgmt-row{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:44px;padding-top:36px;border-top:1px solid var(--gm)}
+.mgmt-box{background:var(--wh);border:1px solid var(--gm);border-radius:var(--r);padding:20px 22px;box-shadow:var(--sh)}
+.mgmt-box h3{font-size:.95rem;font-weight:700;color:var(--dk);margin-bottom:6px}
+.mgmt-box p{font-size:.84rem;color:var(--gt);line-height:1.6}
+.sab-section{margin-top:44px;padding-top:36px;border-top:1px solid var(--gm)}
+.sab-section h3{font-size:1.05rem;font-weight:700;color:var(--dk);margin-bottom:16px}
+.sab-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.sab-card{background:var(--wh);border:1px solid var(--gm);border-radius:var(--r);padding:20px;box-shadow:var(--sh);text-align:center}
+.sab-photo{width:90px;height:90px;border-radius:50%;margin:0 auto 12px;object-fit:cover}
+.sab-card h4{font-size:.9rem;font-weight:700;color:var(--dk);margin-bottom:3px}
+.sab-inst{font-size:.76rem;color:var(--bl);margin-bottom:8px}
+.sab-card p{font-size:.8rem;color:var(--gt);line-height:1.55}
+/* PUBS */
+.pub-filter{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.pub-filter button{padding:5px 15px;border-radius:20px;border:1px solid var(--gm);background:var(--wh);font-size:.78rem;font-weight:600;color:var(--gt);cursor:pointer;transition:all .15s}
+.pub-filter button.active,.pub-filter button:hover{background:var(--bl);color:#fff;border-color:var(--bl)}
+.pub-list{display:flex;flex-direction:column}
+.pub-item{display:grid;grid-template-columns:56px 1fr;border-bottom:1px solid var(--gm);padding:17px 0;align-items:start}
+.pub-year{font-size:.83rem;font-weight:700;color:var(--bl);padding-top:2px}
+.pub-content h4{font-size:.91rem;font-weight:600;color:var(--dk);margin-bottom:3px;line-height:1.4}
+.pub-authors{font-size:.79rem;color:var(--gt);margin-bottom:2px}
+.pub-journal{font-size:.79rem;color:var(--gr);font-style:italic}
+.pub-link{font-size:.76rem;margin-top:3px;display:inline-block;color:var(--bl);font-weight:600}
+/* RESOURCES */
+.res-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.res-card{background:var(--wh);border:1px solid var(--gm);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh)}
+.res-card .rbody{padding:18px}
+.res-card h3{font-size:.94rem;font-weight:700;color:var(--dk);margin-bottom:7px}
+.res-card p{font-size:.81rem;color:var(--gt);line-height:1.6;margin-bottom:13px}
+.btn{display:inline-block;padding:7px 17px;border-radius:var(--r);font-size:.8rem;font-weight:700;text-decoration:none;transition:all .15s}
+.btn-primary{background:var(--bl);color:#fff}
+.btn-primary:hover{background:var(--bld);text-decoration:none}
+.btn-outline{border:2px solid var(--bl);color:var(--bl);background:transparent}
+.btn-outline:hover{background:var(--bl);color:#fff;text-decoration:none}
+/* FOOTER */
+footer{background:var(--dk);color:rgba(255,255,255,0.62);padding:42px 0 28px;font-size:.83rem}
+.footer-inner{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:start;margin-bottom:26px}
+footer h4{font-size:.84rem;font-weight:700;color:rgba(255,255,255,0.9);margin-bottom:8px}
+footer p{line-height:1.7}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:5px;text-align:right}
+.footer-links a{color:rgba(255,255,255,0.55);font-size:.8rem}
+.footer-links a:hover{color:#fff}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:18px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+/* RESPONSIVE */
+@media (max-width:920px){
+  .hero-grid{grid-template-columns:1fr}.hero-imgs{display:none}
+  .about-grid{grid-template-columns:1fr}
+  .thrust-grid{grid-template-columns:1fr}
+  .platforms{grid-template-columns:1fr 1fr}
+  .highlights-grid{grid-template-columns:1fr 1fr}
+  .mgmt-row{grid-template-columns:1fr}
+  .sab-grid{grid-template-columns:1fr}
+  .res-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:600px){
+  :root{--nh:54px}
+  section{padding:52px 0}
+  #site-nav ul{display:none}
+  .platforms,.highlights-grid,.res-grid{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr}
+  .footer-links{text-align:left}
+}</style>
+<!-- ═══════════ NAV ═══════════ -->
+<nav id="site-nav" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo"><!-- Replace with logo: <img src="/wp-content/uploads/mcafes-logo-white.png" alt="m-CAFEs"> -->
+      <span class="nav-logo-text">m-CAFEs</span>
+    </a>
+    <ul>
+      <li>
+        <a href="#about">About</a>
+      </li>
+      <li>
+        <a href="#science">Our Science</a>
+      </li>
+      <li>
+        <a href="#highlights">Highlights</a>
+      </li>
+      <li>
+        <a href="#team">Team</a>
+      </li>
+      <li>
+        <a href="#publications">Publications</a>
+      </li>
+      <li>
+        <a href="#resources">Resources</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<!-- ═══════════ HERO ═══════════ -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-tag">DOE BER Science Focus Area · LBNL-Led</div>
+        <h1>Microbial Community Analysis &amp;
+          <br>
+          <span>Functional Evaluation in Soils</span>
+        </h1>
+        <p class="hero-pull">Soil microbes shape how plants grow, how soils store carbon, and how ecosystems respond to change. Understanding the invisible community around plant roots — the rhizosphere — is essential to advancing DOE missions in bioenergy, agriculture, and the environment.</p>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <strong>12</strong>
+            <span>Principal Investigators</span>
+          </div>
+          <div class="hero-stat">
+            <strong>6</strong>
+            <span>Institutions</span>
+          </div>
+          <div class="hero-stat">
+            <strong>4</strong>
+            <span>Research Thrusts</span>
+          </div>
+          <div class="hero-stat">
+            <strong>DOE BER</strong>
+            <span>Funded</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-imgs"><!-- Hero image 1 (tall left) — replace with rhizosphere/sorghum photo -->
+        <div class="ph g" style="height:100%;border-radius:6px;">Rhizosphere photo</div>
+        <!-- Hero image 2 — EcoFAB -->
+        <div class="ph g" style="border-radius:6px;">EcoFAB photo</div>
+        <!-- Hero image 3 — EcoPOD -->
+        <div class="ph g" style="border-radius:6px;">EcoPOD photo</div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ═══════════ INSTITUTION STRIP ═══════════ -->
+<div class="logo-strip">
+  <div class="container">
+    <span class="strip-label">Partner Institutions</span>
+    <span class="logo-pill">Lawrence Berkeley National Laboratory</span>
+    <span class="logo-pill">UC Berkeley</span>
+    <span class="logo-pill">NC State University</span>
+    <span class="logo-pill">Stanford University</span>
+    <span class="logo-pill">UC Riverside</span>
+    <span class="logo-pill">Boston University</span>
+  </div>
+</div>
+<!-- ═══════════ ABOUT ═══════════ -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="sec-label">About m-CAFEs</div>
+        <h2 class="sec-heading">Toward a Predictive Science of Soil Microbiomes</h2>
+        <div class="divider"></div>
+        <p>m-CAFEs is a multi-institutional Science Focus Area studying how microbes around plant roots assemble, interact, and function. Our team combines next-generation biotechnologies — including CRISPR-Cas and bacteriophage tools — with AI/ML models and unique laboratory ecosystems to understand soil microbial communities at unprecedented resolution.</p>
+        <p>By learning how genes and metabolites direct community assembly, we are building the foundation for a new kind of predictive microbiome science — one that can support sustainable bioenergy crops like sorghum, advance the DOE Genesis Mission, and help address real-world challenges in agriculture and the environment.</p>
+        <div class="ber-callout">
+          <p>
+            <strong>DOE BER Alignment:</strong> AI is a primary focus of the DOE Genesis Mission, with the potential to greatly accelerate scientific discovery. m-CAFEs combines AI/ML with biotechnology innovation to enable predictive microbiome science in support of DOE-BER missions.
+          </p>
+        </div>
+      </div>
+      <div class="about-imgs"><!-- About image 1 — BioEPIC building or facility -->
+        <div class="ph g" style="height:230px;">BioEPIC facility photo</div>
+        <!-- About image 2 — rhizosphere or roots -->
+        <div class="ph g" style="height:175px;">Rhizosphere / root image</div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ═══════════ OUR SCIENCE ═══════════ -->
+<section id="science">
+  <div class="container">
+    <div class="sec-label">Our Science</div>
+    <h2 class="sec-heading">Four Integrated Research Thrusts</h2>
+    <div class="divider"></div>
+    <p class="sec-intro">m-CAFEs research advances along four connected thrusts, each contributing to a unified goal: to understand, predict, design, and support microbial communities that matter for DOE missions.</p>
+    <div class="thrust-grid">
+      <div class="thrust-card">
+        <div class="num">Thrust 01</div>
+        <h3>Developing New Biotechnologies</h3>
+        <p>We build next-generation tools — CRISPR-Cas systems and phage-based approaches — to study how individual genes and microbes shape soil community function in their natural environment.</p>
+        <div class="pis">
+          <strong>Primary PIs</strong>Doudna, Barrangou, Banfield, Deutschbauer, Mukhopadhyay
+        </div>
+      </div>
+      <div class="thrust-card">
+        <div class="num">Thrust 02</div>
+        <h3>Understanding Microbial Community Assembly</h3>
+        <p>Using fabricated ecosystems and multi-omics, we resolve how microbes interact, exchange metabolites, and assemble into stable communities around plant roots.</p>
+        <div class="pis">
+          <strong>Primary PIs</strong>Northen, Zhalnina, Chakraborty, Banfield, Mukhopadhyay
+        </div>
+      </div>
+      <div class="thrust-card ai">
+        <div class="num">Thrust 03 
+          <span class="genesis-badge">Genesis Mission</span>
+        </div>
+        <h3>AI/ML Modeling</h3>
+        <p>We develop AI/ML models that learn from automated experiments and predict how microbial communities behave — a core capability for the DOE Genesis Mission and a foundation for predictive microbiome science.</p>
+        <div class="pis">
+          <strong>Primary PIs</strong>Segrè, Wang, Hill-Maini, Northen
+        </div>
+      </div>
+      <div class="thrust-card">
+        <div class="num">Thrust 04</div>
+        <h3>Rhizosphere Engineering for Sorghum</h3>
+        <p>We apply these tools to sorghum, a key bioenergy crop, to understand and support how root microbiomes contribute to plant productivity in real-world conditions.</p>
+        <div class="pis">
+          <strong>Primary PIs</strong>Eudes, Zhalnina, Northen, Chakraborty
+        </div>
+      </div>
+    </div>
+    <div class="sec-label" style="margin-top:8px;">Experimental Platforms</div>
+    <h3 style="font-size:1.15rem;font-weight:700;color:var(--dk);margin-bottom:22px;">A Scalable, Controlled Laboratory Ecosystem Toolkit</h3>
+    <div class="platforms">
+      <div class="plat-card"><!-- Platform image — EcoFAB -->
+        <div class="ph g" style="height:148px;border-radius:0;">EcoFAB photo</div>
+        <div class="plat-label">EcoFAB</div>
+        <div class="plat-sub">Bench-scale fabricated ecosystem devices for reproducible plant-microbiome studies, distributed as community kits.</div>
+      </div>
+      <div class="plat-card"><!-- Platform image — EcoPOD -->
+        <div class="ph g" style="height:148px;border-radius:0;">EcoPOD photo</div>
+        <div class="plat-label">EcoPOD</div>
+        <div class="plat-sub">Meter-scale contained ecosystems extending m-CAFEs science to more complex soil environments.</div>
+      </div>
+      <div class="plat-card"><!-- Platform image — EcoBOT -->
+        <div class="ph g" style="height:148px;border-radius:0;">EcoBOT photo</div>
+        <div class="plat-label">EcoBOT</div>
+        <div class="plat-sub">Automated robotic imaging and sampling system enabling high-throughput experiments integrated with AI/ML.</div>
+      </div>
+      <div class="plat-card"><!-- Platform image — BioEPIC -->
+        <div class="ph" style="height:148px;border-radius:0;background:#f0eaff;border-color:#9b8ec4;color:#5a4a8a;">BioEPIC photo</div>
+        <div class="plat-label">BioEPIC</div>
+        <div class="plat-sub">LBNL's new facility offering one-of-a-kind capabilities for soil-microbe-plant research.</div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ═══════════ HIGHLIGHTS ═══════════ -->
+<section id="highlights">
+  <div class="container">
+    <div class="sec-label">Science Highlights</div>
+    <h2 class="sec-heading">Recent Discoveries</h2>
+    <div class="divider"></div>
+    <p class="sec-intro">Selected findings from our team — illustrating progress across our four research thrusts and contributions to DOE BER's mission.</p>
+    <div class="highlights-grid"><!-- ┌───────────────────────────────────────────┐ -->
+      <!-- │  HIGHLIGHT CARD TEMPLATE                  │ -->
+      <!-- │  Copy this whole <div class="hcard">      │ -->
+      <!-- │  block to add a new highlight.            │ -->
+      <!-- │                                           │ -->
+      <!-- │  3 things to edit:                        │ -->
+      <!-- │  1. The image (replace .ph div with <img>)│ -->
+      <!-- │  2. The .htag (which thrust)              │ -->
+      <!-- │  3. The h3 title and p description        │ -->
+      <!-- └───────────────────────────────────────────┘ -->
+      <div class="hcard"><!-- IMAGE: replace below div with <img src="..." alt="..." style="width:100%;height:170px;object-fit:cover;"> -->
+        <div class="ph g himg" style="border-radius:0;">Highlight 1 figure</div>
+        <div class="hbody">
+          <div class="htag">Thrust 01 · Biotechnology</div>
+          <h3>[Highlight title — accessible, jargon-light]</h3>
+          <p>2-3 sentence description in plain language. Focus on what was discovered and why it matters — not the methods. Replace this with your real highlight text.</p>
+          <a href="#" class="hlink">Read more →</a>
+        </div>
+      </div>
+      <div class="hcard">
+        <div class="ph g himg" style="border-radius:0;">Highlight 2 figure</div>
+        <div class="hbody">
+          <div class="htag">Thrust 01 · Functional Genomics</div>
+          <h3>[Highlight title]</h3>
+          <p>2-3 sentence description in plain language.</p>
+          <a href="#" class="hlink">Read more →</a>
+        </div>
+      </div>
+      <div class="hcard">
+        <div class="ph g himg" style="border-radius:0;">Highlight 3 figure</div>
+        <div class="hbody">
+          <div class="htag">Thrust 02 · Plant–Microbe Signaling</div>
+          <h3>[Highlight title]</h3>
+          <p>2-3 sentence description in plain language.</p>
+          <a href="#" class="hlink">Read more →</a>
+        </div>
+      </div>
+      <div class="hcard">
+        <div class="ph g himg" style="border-radius:0;">Highlight 4 figure</div>
+        <div class="hbody">
+          <div class="htag">Thrust 02 · Multi-Omics</div>
+          <h3>[Highlight title]</h3>
+          <p>2-3 sentence description in plain language.</p>
+          <a href="#" class="hlink">Read more →</a>
+        </div>
+      </div>
+      <div class="hcard">
+        <div class="ph g himg" style="border-radius:0;">Highlight 5 figure</div>
+        <div class="hbody">
+          <div class="htag">Thrust 03 · AI/ML</div>
+          <h3>[Highlight title]</h3>
+          <p>2-3 sentence description in plain language.</p>
+          <a href="#" class="hlink">Read more →</a>
+        </div>
+      </div>
+      <div class="hcard">
+        <div class="ph g himg" style="border-radius:0;">Highlight 6 figure</div>
+        <div class="hbody">
+          <div class="htag">Thrust 04 · Sorghum &amp; Bioenergy</div>
+          <h3>[Highlight title]</h3>
+          <p>2-3 sentence description in plain language.</p>
+          <a href="#" class="hlink">Read more →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ═══════════ TEAM ═══════════ -->
+<section id="team">
+  <div class="container">
+    <div class="sec-label">Team</div>
+    <h2 class="sec-heading">Principal Investigators</h2>
+    <div class="divider"></div>
+    <p class="sec-intro">The m-CAFEs team brings together 12 leading researchers across 6 institutions, combining deep expertise in microbial genetics, phage biology, plant biology, metabolomics, AI/ML, and environmental microbiology.</p>
+    <!-- Team group photo -->
+    <div class="ph p team-banner">Team photo</div>
+    <div class="pi-grid"><!-- ┌─────────── PI CARD TEMPLATE ───────────┐ -->
+      <!-- │ Replace .ph div with <img class="pi-photo" src="..." alt="..."> │ -->
+      <!-- │ Edit name, institution, role, expertise note │ -->
+      <!-- └─────────────────────────────────────────┘ -->
+      <div class="pi-card">
+        <div class="ph p pi-photo"></div>
+        <h4>Trent Northen</h4>
+        <div class="pi-inst">LBNL</div>
+        <div class="pi-role">Lab Research Manager</div>
+        <div class="pi-note">Metabolomics, EcoFABs, plant-microbe interactions</div>
+      </div>
+      <div class="pi-card">
+        <div class="ph p pi-photo"></div>
+        <h4>Adam Deutschbauer</h4>
+        <div class="pi-inst">LBNL</div>
+        <div class="pi-role">Technical Co-Manager</div>
+        <div class="pi-note">High-throughput functional genomics</div>
+      </div>
+      <div class="pi-card">
+        <div class="ph p pi-photo"></div>
+        <h4>Jennifer Doudna</h4>
+        <div class="pi-inst">UCB / LBNL</div>
+        <div class="pi-role">Co-PI</div>
+        <div class="pi-note">CRISPR-Cas biology, genome editing</div>
+      </div>
+      <div class="pi-card">
+        <div class="ph p pi-photo"></div>
+        <h4>Jillian Banfield</h4>
+        <div class="pi-inst">UCB / LBNL</div>
+        <div class="pi-role">Co-PI</div>
+        <div class="pi-note">Geomicrobiology, metagenomics</div>
+      </div>
+      <div class="pi-card">
+        <div class="ph p pi-photo"></div>
+        <h4>Rodolphe Barrangou</h4>
+        <div class="pi-inst">NC State University</div>
+        <div class="pi-role">Co-PI</div>
+        <div class="pi-note">CRISPR-Cas systems, bacterial genetics</div>
+      </div>
+      <div class="pi-card">
+        <div class="ph p pi-photo"></div>
+        <h4>Romy Chakraborty</h4>
+        <div class="pi-inst">LBNL</div>
+        <div class="pi-role">Co-PI</div>
+        <div class="pi-note">Molecular ecology, biogeochemistry</div>
+      </div>
+      <div class="pi-card">
+        <div class="ph p pi-photo"></div>
+        <h4>Aymerick Eudes</h4>
+        <div class="pi-inst">LBNL</div>
+        <div class="pi-role">Co-PI</div>
+        <div class="pi-note">Plant physiology, metabolic engineering, JBEI</div>
+      </div>
+      <div class="pi-card">
+        <div class="ph p pi-photo"></div>
+        <h4>Ioanan Hill-Maini</h4>
+        <div class="pi-inst">Stanford University</div>
+        <div class="pi-role">Co-PI</div>
+        <div class="pi-note">AI/ML, computational biology</div>
+      </div>
+      <div class="pi-card">
+        <div class="ph p pi-photo"></div>
+        <h4>Aindrila Mukhopadhyay</h4>
+        <div class="pi-inst">LBNL</div>
+        <div class="pi-role">Co-PI</div>
+        <div class="pi-note">Microbial transport, signaling, stress response</div>
+      </div>
+      <div class="pi-card">
+        <div class="ph p pi-photo"></div>
+        <h4>Daniel Segrè</h4>
+        <div class="pi-inst">Boston University</div>
+        <div class="pi-role">Co-PI</div>
+        <div class="pi-note">Computational models of microbial communities</div>
+      </div>
+      <div class="pi-card">
+        <div class="ph p pi-photo"></div>
+        <h4>Mingxun Wang</h4>
+        <div class="pi-inst">UC Riverside</div>
+        <div class="pi-role">Co-PI</div>
+        <div class="pi-note">Omics computation, metabolomics bioinformatics</div>
+      </div>
+      <div class="pi-card">
+        <div class="ph p pi-photo"></div>
+        <h4>Kateryna Zhalnina</h4>
+        <div class="pi-inst">LBNL</div>
+        <div class="pi-role">Co-PI</div>
+        <div class="pi-note">Soil and rhizosphere microbiology</div>
+      </div>
+    </div>
+    <div class="inst-row">
+      <div class="inst-lbl">Partner Institutions</div>
+      <span class="inst-chip">Lawrence Berkeley National Laboratory</span>
+      <span class="inst-chip">UC Berkeley</span>
+      <span class="inst-chip">NC State University</span>
+      <span class="inst-chip">Stanford University</span>
+      <span class="inst-chip">UC Riverside</span>
+      <span class="inst-chip">Boston University</span>
+    </div>
+    <div class="mgmt-row">
+      <div class="mgmt-box">
+        <h3>Program Management</h3>
+        <p>The m-CAFEs SFA is led by 
+          <strong>Trent Northen</strong> (Laboratory Research Manager) and 
+          <strong>Adam Deutschbauer</strong> (Technical Co-Manager). High-level project management support is provided by 
+          <strong>Caitlin Chiang</strong> and 
+          <strong>Suzanne Kosina</strong>.
+        </p>
+      </div>
+      <div class="mgmt-box">
+        <h3>External Collaborations</h3>
+        <p>m-CAFEs collaborates with the three SFAs co-located in BioEPIC — Watershed, ENIGMA, and Belowground Biogeochemistry — and with PNNL, LLNL, ORNL, and LANL, including other Science Focus Areas and Bioenergy Research Centers.</p>
+      </div>
+    </div>
+    <div class="sab-section">
+      <h3>Scientific Advisory Board</h3>
+      <div class="sab-grid">
+        <div class="sab-card">
+          <div class="ph p sab-photo"></div>
+          <h4>Britt Koskella</h4>
+          <div class="sab-inst">UC Berkeley</div>
+          <p>Phage ecology and the role of bacteriophages in shaping microbial communities.</p>
+        </div>
+        <div class="sab-card">
+          <div class="ph p sab-photo"></div>
+          <h4>Maria Harrison</h4>
+          <div class="sab-inst">Boyce Thompson Institute</div>
+          <p>Plant-fungal interactions, mycorrhizal symbiosis, and plant-microbe signaling.</p>
+        </div>
+        <div class="sab-card">
+          <div class="ph p sab-photo"></div>
+          <h4>Yunha Hwang</h4>
+          <div class="sab-inst">MIT</div>
+          <p>Artificial intelligence and machine learning for biological systems.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ═══════════ PUBLICATIONS ═══════════ -->
+<section id="publications">
+  <div class="container">
+    <div class="sec-label">Publications</div>
+    <h2 class="sec-heading">Selected Publications</h2>
+    <div class="divider"></div>
+    <p class="sec-intro">Peer-reviewed contributions from the m-CAFEs team across our four research thrusts.</p>
+    <div class="pub-filter">
+      <button class="active" onclick="filterPubs('all',this)">All</button>
+      <button onclick="filterPubs('t1',this)">Biotechnologies</button>
+      <button onclick="filterPubs('t2',this)">Community Assembly</button>
+      <button onclick="filterPubs('t3',this)">AI/ML</button>
+      <button onclick="filterPubs('t4',this)">Sorghum / Engineering</button>
+      <button onclick="filterPubs('plat',this)">Platforms</button>
+    </div>
+    <div class="pub-list" id="pub-list"><!-- ┌──── PUB ITEM TEMPLATE ────┐ -->
+      <!-- │ data-cat values:           │ -->
+      <!-- │ t1, t2, t3, t4, plat       │ -->
+      <!-- └────────────────────────────┘ -->
+      <div class="pub-item" data-cat="t1">
+        <div class="pub-year">2024</div>
+        <div class="pub-content">
+          <h4>[Publication title]</h4>
+          <div class="pub-authors">[Authors]</div>
+          <div class="pub-journal">[Journal, year]</div>
+          <a href="#" class="pub-link">DOI →</a>
+        </div>
+      </div>
+      <div class="pub-item" data-cat="t2">
+        <div class="pub-year">2024</div>
+        <div class="pub-content">
+          <h4>[Publication title]</h4>
+          <div class="pub-authors">[Authors]</div>
+          <div class="pub-journal">[Journal, year]</div>
+          <a href="#" class="pub-link">DOI →</a>
+        </div>
+      </div>
+      <div class="pub-item" data-cat="t3">
+        <div class="pub-year">2024</div>
+        <div class="pub-content">
+          <h4>[Publication title]</h4>
+          <div class="pub-authors">[Authors]</div>
+          <div class="pub-journal">[Journal, year]</div>
+          <a href="#" class="pub-link">DOI →</a>
+        </div>
+      </div>
+      <div class="pub-item" data-cat="plat">
+        <div class="pub-year">2023</div>
+        <div class="pub-content">
+          <h4>[Publication title]</h4>
+          <div class="pub-authors">[Authors]</div>
+          <div class="pub-journal">[Journal, year]</div>
+          <a href="#" class="pub-link">DOI →</a>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:28px;">
+      <a href="#" class="btn btn-outline">View full publication list →</a>
+    </div>
+  </div>
+</section>
+<!-- ═══════════ RESOURCES ═══════════ -->
+<section id="resources">
+  <div class="container">
+    <div class="sec-label">Resources</div>
+    <h2 class="sec-heading">Data, Tools &amp; Open Science</h2>
+    <div class="divider"></div>
+    <p class="sec-intro">Open science resources from the m-CAFEs team — platforms, protocols, and data repositories available to the broader community.</p>
+    <div class="res-grid">
+      <div class="res-card">
+        <div class="ph g" style="height:140px;border-radius:0;">EcoFAB photo</div>
+        <div class="rbody">
+          <h3>EcoFAB Protocols &amp; Kits</h3>
+          <p>Standardized fabricated ecosystem devices distributed as validated kits with model communities and protocols.</p>
+          <a href="https://eco-fab.org" class="btn btn-primary" target="_blank" rel="noopener">eco-fab.org →</a>
+        </div>
+      </div>
+      <div class="res-card">
+        <div class="ph g" style="height:140px;border-radius:0;">EcoPOD photo</div>
+        <div class="rbody">
+          <h3>EcoPOD Data &amp; Design</h3>
+          <p>Specifications, environmental data, and results from meter-scale EcoPOD pilots.</p>
+          <a href="#" class="btn btn-primary">Access data →</a>
+        </div>
+      </div>
+      <div class="res-card">
+        <div class="ph" style="height:140px;border-radius:0;background:#fff5e6;border-color:#e0a060;color:#7a5020;">ESS-DIVE</div>
+        <div class="rbody">
+          <h3>ESS-DIVE Data Repository</h3>
+          <p>Multi-omics datasets and model outputs deposited in the DOE ESS-DIVE open repository.</p>
+          <a href="https://ess-dive.lbl.gov" class="btn btn-primary" target="_blank" rel="noopener">ESS-DIVE →</a>
+        </div>
+      </div>
+      <div class="res-card">
+        <div class="ph" style="height:140px;border-radius:0;background:#e8f4e8;border-color:#7ab87a;color:#3a6e3a;">KBase</div>
+        <div class="rbody">
+          <h3>KBase Workflows</h3>
+          <p>Computational workflows and genome analysis pipelines on the DOE KBase platform.</p>
+          <a href="https://kbase.us" class="btn btn-primary" target="_blank" rel="noopener">KBase →</a>
+        </div>
+      </div>
+      <div class="res-card">
+        <div class="ph" style="height:140px;border-radius:0;background:#f0eaff;border-color:#9b8ec4;color:#5a4a8a;">Protocols</div>
+        <div class="rbody">
+          <h3>Protocols &amp; Methods</h3>
+          <p>Validated protocols for EcoFAB fabrication, CRISPR delivery, soil processing, and multi-omics.</p>
+          <a href="https://protocols.io" class="btn btn-primary" target="_blank" rel="noopener">protocols.io →</a>
+        </div>
+      </div>
+      <div class="res-card">
+        <div class="ph" style="height:140px;border-radius:0;background:#e6f4ff;border-color:#6aabdd;color:#2a6a9a;">NMDC</div>
+        <div class="rbody">
+          <h3>NMDC Microbiome Data</h3>
+          <p>Soil and rhizosphere datasets in the National Microbiome Data Collaborative.</p>
+          <a href="https://microbiomedata.org" class="btn btn-primary" target="_blank" rel="noopener">NMDC →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <h4>m-CAFEs Science Focus Area</h4>
+        <p>Microbial Community Analysis &amp; Functional Evaluation in Soils
+          <br>
+        Led by Lawrence Berkeley National Laboratory
+          <br>
+        Funded by the U.S. Department of Energy, Office of Science,
+          <br>
+        Office of Biological and Environmental Research
+        </p>
+      </div>
+      <ul class="footer-links">
+        <li>
+          <a href="#about">About</a>
+        </li>
+        <li>
+          <a href="#science">Our Science</a>
+        </li>
+        <li>
+          <a href="#highlights">Highlights</a>
+        </li>
+        <li>
+          <a href="#team">Team</a>
+        </li>
+        <li>
+          <a href="#publications">Publications</a>
+        </li>
+        <li>
+          <a href="#resources">Resources</a>
+        </li>
+        <li>
+          <a href="https://www.lbl.gov/web-support/" style="margin-top:7px;display:block;">Contact</a>
+        </li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      <span>A U.S. Department of Energy National Laboratory Managed by the University of California &nbsp;|&nbsp; 
+        <a href="https://www.lbl.gov/disclaimers/" style="color:rgba(255,255,255,0.4);">Privacy &amp; Security Notice</a>
+      </span>
+      <span style="font-size:.74rem;">© 
+        <span id="yr"></span> Lawrence Berkeley National Laboratory
+      </span>
+    </div>
+  </div>
+</footer>
+<script>document.getElementById('yr').textContent = new Date().getFullYear();
+// Active nav on scroll
+const navLinks = document.querySelectorAll('#site-nav ul a');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+    }
+  });
+}, { rootMargin: '-50% 0px -45% 0px' });
+document.querySelectorAll('section[id]').forEach(s => observer.observe(s));
+// Publication filter
+function filterPubs(cat, btn) {
+  document.querySelectorAll('.pub-filter button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.pub-item').forEach(item => {
+    item.style.display = (cat === 'all' || item.dataset.cat === cat) ? 'grid' : 'none';
+  });
+}</script>
