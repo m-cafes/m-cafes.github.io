@@ -53,16 +53,16 @@ section:nth-of-type(even){background:var(--gl)}
 .ber-callout{margin-top:22px;background:var(--bll);border-left:4px solid var(--bl);border-radius:0 var(--r) var(--r) 0;padding:14px 18px}
 .ber-callout p{font-size:.86rem;color:var(--bld);margin:0}
 .about-imgs{display:flex;flex-direction:column;gap:10px}
-/* THRUSTS */
-.thrust-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-bottom:52px}
-.thrust-card{background:var(--wh);border:1px solid var(--gm);border-radius:var(--r);padding:26px 24px;box-shadow:var(--sh);position:relative}
-.thrust-card.ai{border-top:3px solid var(--purp);background:linear-gradient(to bottom,#faf8ff 0%,#fff 60%)}
-.thrust-card .num{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--bl);margin-bottom:6px}
-.thrust-card.ai .num{color:var(--purp)}
-.thrust-card h3{font-size:1.05rem;font-weight:700;color:var(--dk);margin-bottom:9px}
-.thrust-card p{font-size:.88rem;color:var(--gt);line-height:1.6}
-.thrust-card .pis{margin-top:14px;font-size:.78rem;color:var(--bld)}
-.thrust-card .pis strong{display:block;font-size:.66rem;text-transform:uppercase;letter-spacing:.08em;color:var(--gt);margin-bottom:3px}
+/* research areas */
+.research-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-bottom:52px}
+.research-card{background:var(--wh);border:1px solid var(--gm);border-radius:var(--r);padding:26px 24px;box-shadow:var(--sh);position:relative}
+.research-card.ai{border-top:3px solid var(--purp);background:linear-gradient(to bottom,#faf8ff 0%,#fff 60%)}
+.research-card .num{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--bl);margin-bottom:6px}
+.research-card.ai .num{color:var(--purp)}
+.research-card h3{font-size:1.05rem;font-weight:700;color:var(--dk);margin-bottom:9px}
+.research-card p{font-size:.88rem;color:var(--gt);line-height:1.6}
+.research-card .pis{margin-top:14px;font-size:.78rem;color:var(--bld)}
+.research-card .pis strong{display:block;font-size:.66rem;text-transform:uppercase;letter-spacing:.08em;color:var(--gt);margin-bottom:3px}
 .genesis-badge{display:inline-block;background:var(--purp);color:#fff;font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:2px 8px;border-radius:2px;margin-left:8px;vertical-align:middle}
 /* PLATFORMS */
 .platforms{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
@@ -142,7 +142,7 @@ footer p{line-height:1.7}
 @media (max-width:920px){
   .hero-grid{grid-template-columns:1fr}.hero-imgs{display:none}
   .about-grid{grid-template-columns:1fr}
-  .thrust-grid{grid-template-columns:1fr}
+  .research-grid{grid-template-columns:1fr}
   .platforms{grid-template-columns:1fr 1fr}
   .highlights-grid{grid-template-columns:1fr 1fr}
   .mgmt-row{grid-template-columns:1fr}
@@ -214,7 +214,7 @@ footer p{line-height:1.7}
           </div>
           <div class="hero-stat">
             <strong>4</strong>
-            <span>Research Thrusts</span>
+            <span>Research Areas</span>
           </div>
           <div class="hero-stat">
             <strong>DOE BER</strong>
@@ -275,25 +275,25 @@ footer p{line-height:1.7}
     <h2 class="sec-heading">Four Integrated Research Areas</h2>
     <div class="divider"></div>
     <p class="sec-intro">m-CAFEs research advances along four connected research areas, each contributing to a unified goal: to understand, predict, design, and support microbial communities that matter for DOE missions.</p>
-    <div class="thrust-grid">
-      <div class="thrust-card">
-        <div class="num">Thrust 01</div>
+    <div class="research-grid">
+      <div class="research-card">
+        <div class="num">Aim 01</div>
         <h3>Developing New Biotechnologies</h3>
         <p>We build next-generation tools — CRISPR-Cas systems and phage-based approaches — to study how genes, molecules, and microbes shape soil community function in their environment.</p>
         <div class="pis">
           <strong>Primary PIs</strong>Doudna, Barrangou, Banfield, Deutschbauer, Mukhopadhyay
         </div>
       </div>
-      <div class="thrust-card">
-        <div class="num">Thrust 02</div>
+      <div class="research-card">
+        <div class="num">Aim 02</div>
         <h3>Understanding Microbial Community Assembly</h3>
         <p>We use large-scale characterization to learn how microbes interact and assemble around plant roots.</p>
         <div class="pis">
           <strong>Primary PIs</strong>Deutschbauer, Northen, Chakraborty, Doudna, Hill-Maini
         </div>
       </div>
-      <div class="thrust-card ai">
-        <div class="num">Thrust 03 
+      <div class="research-card ai">
+        <div class="num">Aim 03 
           <span class="genesis-badge">Genesis Mission</span>
         </div>
         <h3>AI/ML Modeling</h3>
@@ -302,8 +302,8 @@ footer p{line-height:1.7}
           <strong>Primary PIs</strong>Segrè, Wang, Hill-Maini, Northen
         </div>
       </div>
-      <div class="thrust-card">
-        <div class="num">Thrust 04</div>
+      <div class="research-card">
+        <div class="num">Aim 04</div>
         <h3>Rhizosphere Engineering for Sorghum</h3>
         <p>We apply these tools to sorghum, a key bioenergy crop, to understand and support how root microbiomes contribute to plant productivity in real-world conditions.</p>
         <div class="pis">
@@ -351,7 +351,7 @@ footer p{line-height:1.7}
       <!-- │                                           │ -->
       <!-- │  3 things to edit:                        │ -->
       <!-- │  1. The image (replace .ph div with <img>)│ -->
-      <!-- │  2. The .htag (which thrust)              │ -->
+      <!-- │  2. The .htag (which highlight)              │ -->
       <!-- │  3. The h3 title and p description        │ -->
       <!-- └───────────────────────────────────────────┘ -->
       <div class="hcard"><!-- IMAGE: replace below div with <img src="..." alt="..." style="width:100%;height:170px;object-fit:cover;"> -->
