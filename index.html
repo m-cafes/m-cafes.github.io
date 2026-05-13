@@ -65,8 +65,9 @@ section:nth-of-type(even){background:var(--gl)}
 .research-card .pis strong{display:block;font-size:.66rem;text-transform:uppercase;letter-spacing:.08em;color:var(--gt);margin-bottom:3px}
 .genesis-badge{display:inline-block;background:var(--purp);color:#fff;font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:2px 8px;border-radius:2px;margin-left:8px;vertical-align:middle}
 /* PLATFORMS */
-.platforms{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.plat-card{background:var(--wh);border:1px solid var(--gm);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);text-align:center}
+.platforms{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.plat-card{background:var(--wh);border:1px solid var(--gm);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);text-align:center;display:flex;flex-direction:column;align-items:center}
+.plat-card img{object-fit:cover;width:100%}
 .plat-label{padding:13px 10px 3px;font-size:.88rem;font-weight:700;color:var(--dk)}
 .plat-sub{padding:0 10px 13px;font-size:.76rem;color:var(--gt);line-height:1.5}
 /* HIGHLIGHTS */
@@ -118,6 +119,10 @@ section:nth-of-type(even){background:var(--gl)}
 .pub-authors{font-size:.79rem;color:var(--gt);margin-bottom:2px}
 .pub-journal{font-size:.79rem;color:var(--gr);font-style:italic}
 .pub-link{font-size:.76rem;margin-top:3px;display:inline-block;color:var(--bl);font-weight:600}
+/* HIGHLIGHT FILTER */
+.highlight-filter{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.highlight-filter button{padding:5px 15px;border-radius:20px;border:1px solid var(--gm);background:var(--wh);font-size:.78rem;font-weight:600;color:var(--gt);cursor:pointer;transition:all .15s}
+.highlight-filter button.active,.highlight-filter button:hover{background:var(--bl);color:#fff;border-color:var(--bl)}
 /* RESOURCES */
 .res-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 .res-card{background:var(--wh);border:1px solid var(--gm);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh)}
@@ -143,7 +148,7 @@ footer p{line-height:1.7}
   .hero-grid{grid-template-columns:1fr}.hero-imgs{display:none}
   .about-grid{grid-template-columns:1fr}
   .research-grid{grid-template-columns:1fr}
-  .platforms{grid-template-columns:1fr 1fr}
+  .platforms{grid-template-columns:1fr}
   .highlights-grid{grid-template-columns:1fr 1fr}
   .mgmt-row{grid-template-columns:1fr}
   .sab-grid{grid-template-columns:1fr}
@@ -182,9 +187,6 @@ footer p{line-height:1.7}
       </li>
       <li>
         <a href="#team">Team</a>
-      </li>
-      <li>
-        <a href="#publications">Publications</a>
       </li>
       <li>
         <a href="#resources">Resources</a>
@@ -277,7 +279,7 @@ footer p{line-height:1.7}
     <p class="sec-intro">m-CAFEs research advances along four connected research areas, each contributing to a unified goal: to understand, predict, design, and support microbial communities that matter for DOE missions.</p>
     <div class="research-grid">
       <div class="research-card">
-        <div class="num">Aim 01</div>
+        <div class="num">Research Area 01</div>
         <h3>Developing New Biotechnologies</h3>
         <p>We build next-generation tools — CRISPR-Cas systems and phage-based approaches — to study how genes, molecules, and microbes shape soil community function in their environment.</p>
         <div class="pis">
@@ -285,7 +287,7 @@ footer p{line-height:1.7}
         </div>
       </div>
       <div class="research-card">
-        <div class="num">Aim 02</div>
+        <div class="num">Research Area 02</div>
         <h3>Understanding Microbial Community Assembly</h3>
         <p>We use large-scale characterization to learn how microbes interact and assemble around plant roots.</p>
         <div class="pis">
@@ -293,7 +295,7 @@ footer p{line-height:1.7}
         </div>
       </div>
       <div class="research-card ai">
-        <div class="num">Aim 03 
+        <div class="num">Research Area 03
           <span class="genesis-badge">Genesis Mission</span>
         </div>
         <h3>AI/ML Modeling</h3>
@@ -303,7 +305,7 @@ footer p{line-height:1.7}
         </div>
       </div>
       <div class="research-card">
-        <div class="num">Aim 04</div>
+        <div class="num">Research Area 04</div>
         <h3>Rhizosphere Engineering for Sorghum</h3>
         <p>We apply these tools to sorghum, a key bioenergy crop, to understand and support how root microbiomes contribute to plant productivity in real-world conditions.</p>
         <div class="pis">
@@ -343,69 +345,86 @@ footer p{line-height:1.7}
     <div class="sec-label">Science Highlights</div>
     <h2 class="sec-heading">Recent Discoveries</h2>
     <div class="divider"></div>
-    <p class="sec-intro">Selected findings from our team — illustrating progress across our four research areas and contributions to DOE BER's mission.</p>
-    <div class="highlights-grid"><!-- ┌───────────────────────────────────────────┐ -->
-      <!-- │  HIGHLIGHT CARD TEMPLATE                  │ -->
-      <!-- │  Copy this whole <div class="hcard">      │ -->
-      <!-- │  block to add a new highlight.            │ -->
-      <!-- │                                           │ -->
-      <!-- │  3 things to edit:                        │ -->
-      <!-- │  1. The image (replace .ph div with <img>)│ -->
-      <!-- │  2. The .htag (which highlight)              │ -->
-      <!-- │  3. The h3 title and p description        │ -->
-      <!-- └───────────────────────────────────────────┘ -->
-      <div class="hcard"><!-- IMAGE: replace below div with <img src="..." alt="..." style="width:100%;height:170px;object-fit:cover;"> -->
-        <div class="ph g himg" style="border-radius:0;">Highlight 1 figure</div>
+    <p class="sec-intro">Selected peer-reviewed findings from our team — illustrating progress across our four research areas and contributions to DOE BER's mission.</p>
+    <div class="highlight-filter">
+      <button class="active" onclick="filterHighlights('all',this)">All</button>
+      <button onclick="filterHighlights('t1',this)">Biotechnologies</button>
+      <button onclick="filterHighlights('t2',this)">Community Assembly</button>
+      <button onclick="filterHighlights('t3',this)">AI/ML</button>
+      <button onclick="filterHighlights('t4',this)">Sorghum / Engineering</button>
+      <button onclick="filterHighlights('plat',this)">Platforms</button>
+    </div>
+    <div class="highlights-grid" id="highlights-grid">
+      <div class="hcard" data-cat="t2">
+        <div class="ph g himg" style="border-radius:0;">figure</div>
         <div class="hbody">
-          <div class="htag">Thrust 01 · Biotechnology</div>
-          <h3>[Highlight title — accessible, jargon-light]</h3>
-          <p>2-3 sentence description in plain language. Focus on what was discovered and why it matters — not the methods. Replace this with your real highlight text.</p>
-          <a href="#" class="hlink">Read more →</a>
+          <div class="htag">2026</div>
+          <h3>Reduced methane emissions in transgenic rice genotypes are associated with altered rhizosphere microbial hydrogen cycling</h3>
+          <p>Shi et al., <em>Nature Communications</em>, <a href="https://doi.org/10.1038/s41467-026-68640-9" target="_blank" rel="noopener">10.1038/s41467-026-68640-9</a></p>
         </div>
       </div>
-      <div class="hcard">
-        <div class="ph g himg" style="border-radius:0;">Highlight 2 figure</div>
+      <div class="hcard" data-cat="t1">
+        <div class="ph g himg" style="border-radius:0;">figure</div>
         <div class="hbody">
-          <div class="htag">Thrust 01 · Functional Genomics</div>
-          <h3>[Highlight title]</h3>
-          <p>2-3 sentence description in plain language.</p>
-          <a href="#" class="hlink">Read more →</a>
+          <div class="htag">2026</div>
+          <h3>Phage-mediated delivery of CRISPR payloads</h3>
+          <p>Beckley et al., <em>Current Opinion in Microbiology</em>, <a href="https://doi.org/10.1016/j.mib.2025.102704" target="_blank" rel="noopener">10.1016/j.mib.2025.102704</a></p>
         </div>
       </div>
-      <div class="hcard">
-        <div class="ph g himg" style="border-radius:0;">Highlight 3 figure</div>
+      <div class="hcard" data-cat="t1">
+        <div class="ph g himg" style="border-radius:0;">figure</div>
         <div class="hbody">
-          <div class="htag">Thrust 02 · Plant–Microbe Signaling</div>
-          <h3>[Highlight title]</h3>
-          <p>2-3 sentence description in plain language.</p>
-          <a href="#" class="hlink">Read more →</a>
+          <div class="htag">2025</div>
+          <h3>A miniature CRISPR–Cas10 enzyme confers immunity by inhibitory signalling</h3>
+          <p>Doherty et al., <em>Nature</em>, <a href="https://doi.org/10.1038/s41586-025-09569-9" target="_blank" rel="noopener">10.1038/s41586-025-09569-9</a></p>
         </div>
       </div>
-      <div class="hcard">
-        <div class="ph g himg" style="border-radius:0;">Highlight 4 figure</div>
+      <div class="hcard" data-cat="t2">
+        <div class="ph g himg" style="border-radius:0;">figure</div>
         <div class="hbody">
-          <div class="htag">Thrust 02 · Multi-Omics</div>
-          <h3>[Highlight title]</h3>
-          <p>2-3 sentence description in plain language.</p>
-          <a href="#" class="hlink">Read more →</a>
+          <div class="htag">2025</div>
+          <h3>Bacterial fitness for plant colonization is influenced by plant growth substrate</h3>
+          <p>Torres et al., <em>New Phytologist</em>, <a href="https://doi.org/10.1111/nph.70617" target="_blank" rel="noopener">10.1111/nph.70617</a></p>
         </div>
       </div>
-      <div class="hcard">
-        <div class="ph g himg" style="border-radius:0;">Highlight 5 figure</div>
+      <div class="hcard" data-cat="t3">
+        <div class="ph g himg" style="border-radius:0;">figure</div>
         <div class="hbody">
-          <div class="htag">Thrust 03 · AI/ML</div>
-          <h3>[Highlight title]</h3>
-          <p>2-3 sentence description in plain language.</p>
-          <a href="#" class="hlink">Read more →</a>
+          <div class="htag">2025</div>
+          <h3>Biophysical metabolic modeling of complex bacterial colony morphology</h3>
+          <p>Dukovski et al., <em>Cell Systems</em>, <a href="https://doi.org/10.1016/j.cels.2025.101352" target="_blank" rel="noopener">10.1016/j.cels.2025.101352</a></p>
         </div>
       </div>
-      <div class="hcard">
-        <div class="ph g himg" style="border-radius:0;">Highlight 6 figure</div>
+      <div class="hcard" data-cat="plat">
+        <div class="ph g himg" style="border-radius:0;">figure</div>
         <div class="hbody">
-          <div class="htag">Thrust 04 · Sorghum &amp; Bioenergy</div>
-          <h3>[Highlight title]</h3>
-          <p>2-3 sentence description in plain language.</p>
-          <a href="#" class="hlink">Read more →</a>
+          <div class="htag">2025</div>
+          <h3>Breaking the reproducibility barrier with standardized protocols for plant-microbiome research</h3>
+          <p>Novak et al., <em>PLOS Biology</em>, <a href="https://doi.org/10.1371/journal.pbio.3003358" target="_blank" rel="noopener">10.1371/journal.pbio.3003358</a></p>
+        </div>
+      </div>
+      <div class="hcard" data-cat="t1">
+        <div class="ph g himg" style="border-radius:0;">figure</div>
+        <div class="hbody">
+          <div class="htag">2025</div>
+          <h3>CRISPRi-ART enables functional genomics of diverse bacteriophages using RNA-binding dCas13d</h3>
+          <p>Adler et al., <em>Nature Microbiology</em>, <a href="https://doi.org/10.1038/s41564-025-01935-7" target="_blank" rel="noopener">10.1038/s41564-025-01935-7</a></p>
+        </div>
+      </div>
+      <div class="hcard" data-cat="plat">
+        <div class="ph g himg" style="border-radius:0;">figure</div>
+        <div class="hbody">
+          <div class="htag">2025</div>
+          <h3>EcoBOT: an AI/ML enabled automated phenotyping capability for model plants</h3>
+          <p>Andeer et al., <em>Frontiers in Plant Science</em>, <a href="https://doi.org/10.3389/fpls.2025.1633557" target="_blank" rel="noopener">10.3389/fpls.2025.1633557</a></p>
+        </div>
+      </div>
+      <div class="hcard" data-cat="t1">
+        <div class="ph g himg" style="border-radius:0;">figure</div>
+        <div class="hbody">
+          <div class="htag">2025</div>
+          <h3>Generating functional plasmid origins with OriGen</h3>
+          <p>Irvine et al., <em>Nucleic Acids Research</em>, <a href="https://doi.org/10.1093/nar/gkaf1198" target="_blank" rel="noopener">10.1093/nar/gkaf1198</a></p>
         </div>
       </div>
     </div>
@@ -566,67 +585,6 @@ footer p{line-height:1.7}
     </div>
   </div>
 </section>
-<!-- ═══════════ PUBLICATIONS ═══════════ -->
-<section id="publications">
-  <div class="container">
-    <div class="sec-label">Publications</div>
-    <h2 class="sec-heading">Selected Publications</h2>
-    <div class="divider"></div>
-    <p class="sec-intro">Peer-reviewed contributions from the m-CAFEs team across our four research areas.</p>
-    <div class="pub-filter">
-      <button class="active" onclick="filterPubs('all',this)">All</button>
-      <button onclick="filterPubs('t1',this)">Biotechnologies</button>
-      <button onclick="filterPubs('t2',this)">Community Assembly</button>
-      <button onclick="filterPubs('t3',this)">AI/ML</button>
-      <button onclick="filterPubs('t4',this)">Sorghum / Engineering</button>
-      <button onclick="filterPubs('plat',this)">Platforms</button>
-    </div>
-    <div class="pub-list" id="pub-list"><!-- ┌──── PUB ITEM TEMPLATE ────┐ -->
-      <!-- │ data-cat values:           │ -->
-      <!-- │ t1, t2, t3, t4, plat       │ -->
-      <!-- └────────────────────────────┘ -->
-      <div class="pub-item" data-cat="t1">
-        <div class="pub-year">2024</div>
-        <div class="pub-content">
-          <h4>[Publication title]</h4>
-          <div class="pub-authors">[Authors]</div>
-          <div class="pub-journal">[Journal, year]</div>
-          <a href="#" class="pub-link">DOI →</a>
-        </div>
-      </div>
-      <div class="pub-item" data-cat="t2">
-        <div class="pub-year">2024</div>
-        <div class="pub-content">
-          <h4>[Publication title]</h4>
-          <div class="pub-authors">[Authors]</div>
-          <div class="pub-journal">[Journal, year]</div>
-          <a href="#" class="pub-link">DOI →</a>
-        </div>
-      </div>
-      <div class="pub-item" data-cat="t3">
-        <div class="pub-year">2024</div>
-        <div class="pub-content">
-          <h4>[Publication title]</h4>
-          <div class="pub-authors">[Authors]</div>
-          <div class="pub-journal">[Journal, year]</div>
-          <a href="#" class="pub-link">DOI →</a>
-        </div>
-      </div>
-      <div class="pub-item" data-cat="plat">
-        <div class="pub-year">2023</div>
-        <div class="pub-content">
-          <h4>[Publication title]</h4>
-          <div class="pub-authors">[Authors]</div>
-          <div class="pub-journal">[Journal, year]</div>
-          <a href="#" class="pub-link">DOI →</a>
-        </div>
-      </div>
-    </div>
-    <div style="margin-top:28px;">
-      <a href="#" class="btn btn-outline">View full publication list →</a>
-    </div>
-  </div>
-</section>
 <!-- ═══════════ RESOURCES ═══════════ -->
 <section id="resources">
   <div class="container">
@@ -779,9 +737,6 @@ footer p{line-height:1.7}
           <a href="#team">Team</a>
         </li>
         <li>
-          <a href="#publications">Publications</a>
-        </li>
-        <li>
           <a href="#resources">Resources</a>
         </li>
         <li>
@@ -810,11 +765,11 @@ const observer = new IntersectionObserver(entries => {
   });
 }, { rootMargin: '-50% 0px -45% 0px' });
 document.querySelectorAll('section[id]').forEach(s => observer.observe(s));
-// Publication filter
-function filterPubs(cat, btn) {
-  document.querySelectorAll('.pub-filter button').forEach(b => b.classList.remove('active'));
+// Highlight filter
+function filterHighlights(cat, btn) {
+  document.querySelectorAll('.highlight-filter button').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  document.querySelectorAll('.pub-item').forEach(item => {
-    item.style.display = (cat === 'all' || item.dataset.cat === cat) ? 'grid' : 'none';
+  document.querySelectorAll('.hcard').forEach(item => {
+    item.style.display = (cat === 'all' || item.dataset.cat === cat) ? 'flex' : 'none';
   });
 }</script>
