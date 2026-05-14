@@ -52,7 +52,7 @@ section:nth-of-type(even){background:var(--gl)}
 .about-text p{color:var(--gt);margin-bottom:15px;font-size:.95rem}
 .ber-callout{margin-top:22px;background:var(--bll);border-left:4px solid var(--bl);border-radius:0 var(--r) var(--r) 0;padding:14px 18px}
 .ber-callout p{font-size:.86rem;color:var(--bld);margin:0}
-.about-imgs{display:grid;grid-template-rows: 1fr 1fr;gap:20px}
+.about-imgs{display:grid;grid-template-rows:auto auto;gap:20px}
 /* research areas */
 .research-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-bottom:52px}
 .research-card{background:var(--wh);border:1px solid var(--gm);border-radius:var(--r);padding:26px 24px;box-shadow:var(--sh);position:relative}
@@ -68,8 +68,8 @@ section:nth-of-type(even){background:var(--gl)}
 .platforms{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
 .plat-card{background:var(--wh);border:1px solid var(--gm);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);text-align:center;display:flex;flex-direction:column;align-items:center}
 .plat-card img{object-fit:cover;width:100%}
-.plat-label{padding:13px 10px 3px;font-size:.88rem;font-weight:700;color:var(--dk)}
-.plat-sub{padding:0 10px 13px;font-size:.76rem;color:var(--gt);line-height:1.5}
+.plat-label{padding:13px 10px 3px;font-size:1.05rem;font-weight:700;color:var(--dk)}
+.plat-sub{padding:0 10px 13px;font-size:.88rem;color:var(--gt);line-height:1.5}
 /* HIGHLIGHTS */
 .highlights-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .hcard{background:var(--wh);border:1px solid var(--gm);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
@@ -356,7 +356,7 @@ footer p{line-height:1.7}
     </div>
     <div class="highlights-grid" id="highlights-grid">
       <div class="hcard" data-cat="t2">
-        <img src="assets/images/highlights/shi et al 41467_2026_68640_Fig8_HTML.png" alt="figure" class="himg" style="width:100%;height:170px;object-fit:cover;">
+        <img src="assets/images/highlights/shi et al 41467_2026_68640_Fig8_HTML.png" alt="figure" class="himg" style="width:100%;height:170px;object-fit:contain;background:#f5f6f7;">
         <div class="hbody">
           <div class="htag">2026</div>
           <h3>Reduced methane emissions in transgenic rice genotypes are associated with altered rhizosphere microbial hydrogen cycling</h3>
@@ -364,7 +364,7 @@ footer p{line-height:1.7}
         </div>
       </div>
       <div class="hcard" data-cat="t1">
-        <img src="assets/images/highlights/beckley et al 1-s2.0-S1369527425001262-gr2_lrg.jpg" alt="figure" class="himg" style="width:100%;height:170px;object-fit:cover;">
+        <img src="assets/images/highlights/beckley et al 1-s2.0-S1369527425001262-gr2_lrg.jpg" alt="figure" class="himg" style="width:100%;height:170px;object-fit:contain;background:#f5f6f7;">
         <div class="hbody">
           <div class="htag">2026</div>
           <h3>Phage-mediated delivery of CRISPR payloads</h3>
@@ -372,7 +372,7 @@ footer p{line-height:1.7}
         </div>
       </div>
       <div class="hcard" data-cat="t1">
-        <img src="assets/images/highlights/doherty et al 41586_2025_9569_Fig8_ESM.jpg" alt="figure" class="himg" style="width:100%;height:170px;object-fit:cover;">
+        <img src="assets/images/highlights/doherty et al 41586_2025_9569_Fig8_ESM.jpg" alt="figure" class="himg" style="width:100%;height:170px;object-fit:contain;background:#f5f6f7;">
         <div class="hbody">
           <div class="htag">2025</div>
           <h3>A miniature CRISPR–Cas10 enzyme confers immunity by inhibitory signalling</h3>
@@ -380,7 +380,7 @@ footer p{line-height:1.7}
         </div>
       </div>
       <div class="hcard" data-cat="t2">
-        <img src="assets/images/highlights/highlight_bacterial-fitness_fig1.jpg" alt="figure" class="himg" style="width:100%;height:170px;object-fit:cover;">
+        <img src="assets/images/highlights/highlight_bacterial-fitness_fig1.jpg" alt="figure" class="himg" style="width:100%;height:170px;object-fit:contain;background:#f5f6f7;">
         <div class="hbody">
           <div class="htag">2025</div>
           <h3>Bacterial fitness for plant colonization is influenced by plant growth substrate</h3>
@@ -388,7 +388,7 @@ footer p{line-height:1.7}
         </div>
       </div>
       <div class="hcard" data-cat="t3">
-        <img src="assets/images/highlights/highlight_colony-modeling_fig1.jpg" alt="figure" class="himg" style="width:100%;height:170px;object-fit:cover;">
+        <img src="assets/images/highlights/highlight_colony-modeling_fig1.jpg" alt="figure" class="himg" style="width:100%;height:170px;object-fit:contain;background:#f5f6f7;">
         <div class="hbody">
           <div class="htag">2025</div>
           <h3>Biophysical metabolic modeling of complex bacterial colony morphology</h3>
@@ -396,7 +396,7 @@ footer p{line-height:1.7}
         </div>
       </div>
       <div class="hcard" data-cat="plat">
-        <img src="assets/images/highlights/highlight_ecofab-protocols_fig1.jpg" alt="figure" class="himg" style="width:100%;height:170px;object-fit:cover;">
+        <img src="assets/images/highlights/highlight_ecofab-protocols_fig1.jpg" alt="figure" class="himg" style="width:100%;height:170px;object-fit:contain;background:#f5f6f7;">
         <div class="hbody">
           <div class="htag">2025</div>
           <h3>Breaking the reproducibility barrier with standardized protocols for plant-microbiome research</h3>
@@ -404,7 +404,7 @@ footer p{line-height:1.7}
         </div>
       </div>
       <div class="hcard" data-cat="t1">
-        <img src="assets/images/highlights/highlight_crispri-art_fig1.jpg" alt="figure" class="himg" style="width:100%;height:170px;object-fit:cover;">
+        <img src="assets/images/highlights/highlight_crispri-art_fig1.jpg" alt="figure" class="himg" style="width:100%;height:170px;object-fit:contain;background:#f5f6f7;">
         <div class="hbody">
           <div class="htag">2025</div>
           <h3>CRISPRi-ART enables functional genomics of diverse bacteriophages using RNA-binding dCas13d</h3>
@@ -412,7 +412,7 @@ footer p{line-height:1.7}
         </div>
       </div>
       <div class="hcard" data-cat="plat">
-        <img src="assets/images/highlights/highlight_ecobot_fig1.jpg" alt="figure" class="himg" style="width:100%;height:170px;object-fit:cover;">
+        <img src="assets/images/highlights/highlight_ecobot_fig1.jpg" alt="figure" class="himg" style="width:100%;height:170px;object-fit:contain;background:#f5f6f7;">
         <div class="hbody">
           <div class="htag">2025</div>
           <h3>EcoBOT: an AI/ML enabled automated phenotyping capability for model plants</h3>
@@ -420,7 +420,7 @@ footer p{line-height:1.7}
         </div>
       </div>
       <div class="hcard" data-cat="t1">
-        <img src="assets/images/highlights/highlight_origen_fig1.jpg" alt="figure" class="himg" style="width:100%;height:170px;object-fit:cover;">
+        <img src="assets/images/highlights/highlight_origen_fig1.jpg" alt="figure" class="himg" style="width:100%;height:170px;object-fit:contain;background:#f5f6f7;">
         <div class="hbody">
           <div class="htag">2025</div>
           <h3>Generating functional plasmid origins with OriGen</h3>
@@ -650,7 +650,7 @@ footer p{line-height:1.7}
         </div>
       </div>
       <div class="res-card">
-        <div class="ph" style="height:140px;border-radius:0;background:#eef8ee;border-color:#5abf5a;color:#2a7f2a;">Fitness Browser</div>
+        <img class="img" style="height:140px;border-radius:0;object-fit:contain;padding:20px;background:#fff;" src="assets/images/logos/fitness-browser-icon.ico" alt="Fitness Browser">
         <div class="rbody">
           <h3>Fitness Browser</h3>
           <p>Browse genome-wide fitness data from thousands of experimental conditions across diverse bacteria.</p>
